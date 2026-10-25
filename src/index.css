@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Sora:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg-deep: #0b1220;
+  --bg-mid: #132033;
+  --bg-soft: #1a2d44;
+  --surface: rgba(236, 242, 248, 0.94);
+  --surface-strong: #ecf2f8;
+  --ink: #0f1c2e;
+  --ink-muted: #5b6b7c;
+  --accent: #1f9e8a;
+  --accent-deep: #167a6a;
+  --line: rgba(15, 28, 46, 0.12);
+  --high: #d64545;
+  --medium: #c47a1a;
+  --low: #2f7d6d;
+  --shadow: 0 20px 44px rgba(6, 12, 24, 0.28);
+  --radius: 16px;
+  --font-display: 'Bricolage Grotesque', 'Vazirmatn', sans-serif;
+  --font-body: 'Sora', 'Vazirmatn', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(ellipse 90% 55% at 0% 0%, rgba(31, 158, 138, 0.22), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 10%, rgba(74, 120, 180, 0.2), transparent 50%),
+    linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 48%, var(--bg-soft) 100%);
+  background-attachment: fixed;
+}
+
+body[data-locale='fa'] {
+  --font-display: 'Vazirmatn', sans-serif;
+  --font-body: 'Vazirmatn', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 1.25rem 1rem 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .app-shell {
+    padding: 2rem 2rem 3rem;
+  }
+}
+
+.panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: visible;
+}
+
+.panel-header {
+  z-index: 40;
+}
+
+.panel-main {
+  z-index: 1;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+body[data-locale='fa'] .brand-title {
+  letter-spacing: 0;
+}
+
+.fade-in {
+  animation: fadeUp 0.45s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-row {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.task-row:focus-within {
+  z-index: 20;
+}
+
+.task-row:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.task-controls {
+  position: relative;
+  z-index: 2;
+}
+
+.task-controls select {
+  position: relative;
+  z-index: 3;
+}
+
+.dropdown-menu {
+  position: absolute;
+  inset-inline-end: 0;
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+
+.board-column {
+  min-height: 280px;
+  overflow: visible;
+}
+
+.board-card.dragging,
+.dragging .board-card {
+  opacity: 0.45;
+}
+
+.priority-high {
+  color: var(--high);
+}
+
+.priority-medium {
+  color: var(--medium);
+}
+
+.priority-low {
+  color: var(--low);
+}
